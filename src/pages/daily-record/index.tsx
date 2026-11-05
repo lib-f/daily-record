@@ -245,59 +245,63 @@ const DailyRecordPage: React.FC = () => {
         </View>
       </View>
 
-      <Text className={styles.sectionTitle}>记一笔</Text>
-
       <ScrollView
         className={styles.contentScroll}
         scrollY
         enhanced
         showScrollbar={false}
       >
-        <Form className={styles.formCard} onSubmit={handleSubmit}>
-          <View className={styles.field}>
-            <Text className={styles.fieldLabel}>买了什么</Text>
-            <Input
-              className={itemError ? styles.inputError : styles.input}
-              value={itemName}
-              maxlength={ITEM_NAME_MAX_LENGTH}
-              placeholder="例如：牛奶"
-              onInput={(event) => {
-                setItemName(event.detail.value);
-                if (itemError) setItemError('');
-              }}
-            />
-            <Text className={styles.fieldError}>{itemError}</Text>
-          </View>
+        <View className={styles.formSection}>
+          <Text className={classNames(styles.sectionTitle, styles.formHeader)}>
+            记一笔
+          </Text>
 
-          <View className={styles.field}>
-            <Text className={styles.fieldLabel}>花了多少钱</Text>
-            <View className={amountError ? styles.amountInputError : styles.amountInput}>
-              <Text className={styles.currency}>¥</Text>
+          <Form className={styles.formCard} onSubmit={handleSubmit}>
+            <View className={styles.field}>
+              <Text className={styles.fieldLabel}>买了什么</Text>
               <Input
-                className={styles.amountControl}
-                value={amount}
-                type="digit"
-                maxlength={9}
-                placeholder="0.00"
+                className={itemError ? styles.inputError : styles.input}
+                value={itemName}
+                maxlength={ITEM_NAME_MAX_LENGTH}
+                placeholder="例如：牛奶"
                 onInput={(event) => {
-                  setAmount(event.detail.value);
-                  if (amountError) setAmountError('');
+                  setItemName(event.detail.value);
+                  if (itemError) setItemError('');
                 }}
               />
+              <Text className={styles.fieldError}>{itemError}</Text>
             </View>
-            <Text className={styles.fieldError}>{amountError}</Text>
-          </View>
 
-          {/* <Text className={styles.storageError}>{storageError}</Text> */}
-          <View
-            className={styles.submitButton}
-            role="button"
-            ariaLabel="保存记录"
-            onClick={handleSubmit}
-          >
-            保存记录
-          </View>
-        </Form>
+            <View className={styles.field}>
+              <Text className={styles.fieldLabel}>花了多少钱</Text>
+              <View className={amountError ? styles.amountInputError : styles.amountInput}>
+                <Text className={styles.currency}>¥</Text>
+                <Input
+                  className={styles.amountControl}
+                  value={amount}
+                  type="digit"
+                  maxlength={9}
+                  placeholder="0.00"
+                  onInput={(event) => {
+                    setAmount(event.detail.value);
+                    if (amountError) setAmountError('');
+                  }}
+                />
+              </View>
+              <Text className={styles.fieldError}>{amountError}</Text>
+            </View>
+
+            {/* <Text className={styles.storageError}>{storageError}</Text> */}
+            <View
+              className={styles.submitButton}
+              role="button"
+              ariaLabel="保存记录"
+              onClick={handleSubmit}
+            >
+              保存记录
+            </View>
+          </Form>
+        </View>
 
         <View className={styles.recordsSection}>
           <View className={styles.recordsHeader}>

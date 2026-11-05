@@ -1,2 +1,2 @@
-<!--pages/daily-record/index.wxml-->
-<text>pages/daily-record/index.wxml</text>
+<import src="../../base.wxml"/>
+<template is="taro_tmpl" data="{{root:root}}" />

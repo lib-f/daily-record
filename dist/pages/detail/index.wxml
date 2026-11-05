@@ -1,2 +1,2 @@
-<!--pages/detail/index.wxml-->
-<text>pages/detail/index.wxml</text>
+<import src="../../base.wxml"/>
+<template is="taro_tmpl" data="{{root:root}}" />
