@@ -1,0 +1,419 @@
+@use "@/styles/variables.scss" as *;
+
+.page {
+  height: 100vh;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  padding: $spacing-lg $page-padding $spacing-lg;
+  background: $color-bg-page;
+}
+
+.backButton {
+  width: 64rpx;
+  height: 64rpx;
+  margin-bottom: $spacing-md;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+  transition: background $transition-fast, transform $transition-fast;
+  flex-shrink: 0;
+  @include flex-center;
+
+  &:active {
+    background: $color-bg-hover;
+    transform: scale(0.96);
+  }
+}
+
+.calendarCard {
+  flex-shrink: 0;
+  padding: $spacing-md $spacing-lg $spacing-lg;
+  margin-bottom: $spacing-md;
+  border-radius: $radius-lg;
+  background: $color-primary-dark;
+  color: $color-text-white;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56rpx;
+}
+
+.monthButton {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.1);
+  transition: opacity $transition-fast, background $transition-fast;
+  @include flex-center;
+
+  &:active {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.monthButtonDisabled {
+  opacity: 0.3;
+
+  &:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.monthTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+}
+
+.summary {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: $spacing-md 0;
+}
+
+.summaryLabel,
+.summaryAmount,
+.summaryCountValue,
+.summaryCountLabel,
+.sectionTitle,
+.fieldLabel,
+.fieldError,
+.storageError,
+.recordName,
+.recordTime,
+.recordAmount,
+.emptyTitle,
+.emptyDescription {
+  display: block;
+}
+
+.summaryLabel {
+  margin-bottom: $spacing-xs;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: $font-size-xs;
+}
+
+.summaryAmount {
+  font-size: 44rpx;
+  font-weight: $font-weight-bold;
+}
+
+.summaryCount {
+  min-width: 120rpx;
+  text-align: right;
+}
+
+.summaryCountValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+}
+
+.summaryCountLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: $font-size-xs;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.weekday,
+.calendarDay {
+  height: 38rpx;
+  text-align: center;
+}
+
+.weekday {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 20rpx;
+  line-height: 38rpx;
+}
+
+.calendarDay {
+  position: relative;
+  border-radius: $radius-md;
+  transition: background $transition-fast, opacity $transition-fast;
+  @include flex-center;
+}
+
+.dayContent {
+  width: 32rpx;
+  height: 38rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dayNumber {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  font-size: 20rpx;
+  line-height: 32rpx;
+}
+
+.calendarDaySelected .dayNumber {
+  background: $color-text-white;
+  color: $color-primary-dark;
+  font-weight: $font-weight-bold;
+}
+
+.calendarDayToday .dayNumber {
+  box-shadow: inset 0 0 0 1rpx rgba(255, 255, 255, 0.75);
+}
+
+.calendarDayDisabled {
+  opacity: 0.3;
+}
+
+.recordDot {
+  width: 5rpx;
+  height: 5rpx;
+  flex-shrink: 0;
+  margin-top: -1rpx;
+  border-radius: 50%;
+  background: #fbbf24;
+}
+
+.formCard {
+  display: block;
+  width: 100%;
+}
+
+.contentScroll {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  overscroll-behavior: contain;
+}
+
+.sectionTitle {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+}
+
+.field {
+  margin-top: $spacing-md;
+}
+
+.fieldLabel {
+  margin-bottom: $spacing-sm;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+.input,
+.inputError,
+.amountInput,
+.amountInputError {
+  width: 100%;
+  height: $button-height-md;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-page;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast;
+}
+
+.input,
+.inputError {
+  padding: 0 $spacing-md;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  line-height: $button-height-md;
+}
+
+.inputError,
+.amountInputError {
+  border-color: $color-error;
+  background: #fff7f7;
+}
+
+.input,
+.inputError {
+  :global(.weui-input) {
+    height: 100% !important;
+  }
+}
+
+.amountInput,
+.amountInputError {
+  display: flex;
+  align-items: center;
+  padding: 0 $spacing-md;
+}
+
+.currency {
+  margin-right: $spacing-sm;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+}
+
+.amountControl {
+  flex: 1;
+  min-width: 0;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+}
+
+.fieldError,
+.storageError {
+  min-height: 34rpx;
+  color: $color-error;
+  font-size: $font-size-xs;
+  line-height: 34rpx;
+}
+
+.fieldError {
+  margin-top: $spacing-xs;
+}
+
+.storageError {
+  margin-bottom: $spacing-xs;
+}
+
+.submitButton {
+  width: 100%;
+  height: $button-height-md;
+  border-radius: $radius-button;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  margin-top: 0.64rem !important;
+  transition: transform $transition-fast;
+  @include button-reset;
+
+  &:active {
+    background: $color-primary;
+    color: $color-text-white;
+    transform: scale(0.98);
+  }
+
+  &:focus {
+    background: $color-primary;
+    color: $color-text-white;
+  }
+}
+
+.recordsSection {
+  margin-top: $spacing-lg;
+}
+
+.recordsHeader {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.recordsCaption {
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+}
+
+.recordList {
+  width: 100%;
+  max-height: 634rpx;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.recordCard {
+  height: 114rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: $spacing-md;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-md;
+  background: $color-bg-card;
+}
+
+.recordCard + .recordCard {
+  margin-top: $spacing-sm;
+}
+
+.recordIcon {
+  width: 64rpx;
+  height: 64rpx;
+  flex-shrink: 0;
+  margin-right: $spacing-md;
+  border-radius: $radius-md;
+  background: $color-bg-soft;
+  @include flex-center;
+}
+
+.recordContent {
+  min-width: 0;
+  flex: 1;
+}
+
+.recordName {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  @include text-ellipsis;
+}
+
+.recordTime {
+  margin-top: $spacing-xs;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+}
+
+.recordAmount {
+  max-width: 180rpx;
+  margin-left: $spacing-sm;
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  @include text-ellipsis;
+}
+
+.deleteButton {
+  width: 56rpx;
+  height: 56rpx;
+  flex-shrink: 0;
+  margin-left: $spacing-xs;
+  @include flex-center;
+}
+
+.emptyState {
+  min-height: 260rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: $spacing-xl;
+  border: 1rpx dashed $color-border;
+  border-radius: $radius-lg;
+  background: $color-bg-card;
+  text-align: center;
+  margin-bottom: 0.64rem;
+}
+
+.emptyTitle {
+  margin-top: $spacing-md;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+}
+
+.emptyDescription {
+  margin-top: $spacing-xs;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+}

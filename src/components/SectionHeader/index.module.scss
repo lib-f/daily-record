@@ -1,0 +1,21 @@
+@use '@/styles/variables.scss' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.title {
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+}
+
+.caption {
+  max-width: 240rpx;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+  @include text-ellipsis;
+}

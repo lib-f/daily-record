@@ -1,0 +1,115 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: calc(100vh - 110rpx);
+  padding: 72rpx $page-padding 64rpx;
+  background: $color-bg-page;
+}
+
+.header {
+  margin-bottom: 52rpx;
+}
+
+.eyebrow,
+.title,
+.description,
+.entryTitle,
+.entryDescription {
+  display: block;
+}
+
+.eyebrow {
+  margin-bottom: $spacing-sm;
+  color: $color-primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+}
+
+.title {
+  color: $color-text-primary;
+  font-size: 48rpx;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+.description {
+  max-width: 600rpx;
+  margin-top: $spacing-md;
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+.entryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $spacing-md;
+}
+
+.entryCard {
+  min-width: 0;
+  height: 360rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: $spacing-lg;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-lg;
+  transition: transform $transition-base, opacity $transition-base;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+.record {
+  background: #e9f6f3;
+
+  .entryIcon {
+    background: $color-primary-dark;
+  }
+}
+
+.storage {
+  background: #fff1e8;
+
+  .entryIcon {
+    background: #c75b39;
+  }
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.entryIcon {
+  width: 76rpx;
+  height: 76rpx;
+  color: $color-text-white;
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-md;
+  @include flex-center;
+}
+
+.arrow {
+  flex-shrink: 0;
+}
+
+.entryTitle {
+  margin-bottom: $spacing-sm;
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  @include text-ellipsis;
+}
+
+.entryDescription {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+  line-height: $line-height-normal;
+  @include text-ellipsis-multi(2);
+}

@@ -1,0 +1,62 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: 160rpx $page-padding $spacing-xl;
+}
+
+.placeholder {
+  padding: 64rpx $spacing-lg;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-bg-card;
+  text-align: center;
+  box-shadow: $shadow-card;
+}
+
+.symbol {
+  width: 96rpx;
+  height: 96rpx;
+  margin: 0 auto $spacing-lg;
+  border-radius: $radius-round;
+  background: $color-bg-soft;
+  color: $color-primary;
+  font-size: 48rpx;
+  @include flex-center;
+}
+
+.title,
+.description {
+  display: block;
+}
+
+.title {
+  color: $color-text-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  @include text-ellipsis;
+}
+
+.description {
+  margin: $spacing-sm 0 $spacing-xl;
+  color: $color-text-tertiary;
+  font-size: $font-size-md;
+}
+
+.backButton {
+  width: 280rpx;
+  height: $button-height-md;
+  margin: 0 auto;
+  border: 1rpx solid $color-primary;
+  border-radius: $radius-button;
+  background: $color-primary;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  @include flex-center;
+
+  &:active {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}

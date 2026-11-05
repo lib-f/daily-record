@@ -1,0 +1,152 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  padding: $spacing-lg $page-padding 64rpx;
+  background: linear-gradient(180deg, #eaf8f5 0%, $color-bg-page 360rpx);
+}
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-xl;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+}
+
+.avatar {
+  flex: 0 0 96rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: $radius-round;
+  background: $color-primary-dark;
+  color: $color-text-white;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  @include flex-center;
+}
+
+.profileInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.name,
+.subtitle {
+  display: block;
+  @include text-ellipsis;
+}
+
+.name {
+  margin-bottom: $spacing-xs;
+  color: $color-text-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+}
+
+.subtitle {
+  color: $color-text-tertiary;
+  font-size: $font-size-sm;
+}
+
+.version {
+  flex-shrink: 0;
+  padding: 4rpx 12rpx;
+  border-radius: $radius-xs;
+  background: $color-bg-soft;
+  color: $color-primary;
+  font-size: $font-size-xs;
+}
+
+.groupTitle {
+  display: block;
+  margin: 0 0 $spacing-sm $spacing-xs;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+}
+
+.settingGroup,
+.structureCard {
+  margin-bottom: $spacing-xl;
+  border: 1rpx solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-bg-card;
+}
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  min-height: 120rpx;
+  padding: $spacing-md $spacing-lg;
+}
+
+.settingInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.settingTitle,
+.settingDescription {
+  display: block;
+}
+
+.settingTitle {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+}
+
+.settingDescription {
+  margin-top: 4rpx;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+  @include text-ellipsis;
+}
+
+.divider {
+  height: 1rpx;
+  margin-left: $spacing-lg;
+  background: $color-divider;
+}
+
+.chevron {
+  color: $color-text-tertiary;
+  font-size: 44rpx;
+}
+
+.structureCard {
+  padding: $spacing-lg;
+}
+
+.codeLine,
+.codeHint {
+  display: block;
+}
+
+.codeLine {
+  color: $color-primary-dark;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+}
+
+.codeHint {
+  margin: $spacing-xs 0 $spacing-md;
+  color: $color-text-tertiary;
+  font-size: $font-size-xs;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  display: block;
+  padding: $spacing-lg 0;
+  color: $color-text-disabled;
+  font-size: $font-size-xs;
+  text-align: center;
+}
